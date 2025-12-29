@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Shreya ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
+  text-align: center;
+  color: #5a0033;
+}
+
+.container {
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+h1, h2 {
+  color: #b30059;
+}
+
+button {
+  padding: 14px 30px;
+  margin: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.yes {
+  background: linear-gradient(45deg, #ff4d6d, #ff758f);
+  color: white;
+}
+
+.no {
+  background: #555;
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="range"] {
+  width: 70%;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.polaroid {
+  background: white;
+  padding: 10px 10px 30px;
+  width: 200px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transform: rotate(-2deg);
+  animation: float 3s ease-in-out infinite;
+}
+
+.polaroid:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.polaroid img {
+  width: 100%;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.award {
+  font-size: 24px;
+  background: #fff0f5;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 30px auto;
+  width: 80%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.letter {
+  background: white;
+  padding: 30px;
+  margin: 30px auto;
+  border-radius: 20px;
+  width: 85%;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: rise 6s linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+.firework {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(20); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 350);
+</script>
+
+<div class="container">
+
+<div id="step1">
+  <h1>Shreya Parekh ❤️</h1>
+  <h2>Do you love me?</h2>
+  <button class="yes" onclick="yesClicked()">Yes</button>
+  <button class="no" onclick="noClicked()">No</button>
+</div>
+
+<div id="step2" class="hidden">
+  <h2>Shreya, how much do you love me? 💖</h2>
+  <input type="range" min="0" max="100" value="100" id="loveRange">
+  <p><span id="percent">100</span>%</p>
+  <button class="yes" onclick="next()">Continue 💕</button>
+</div>
+
+<div id="step3" class="hidden">
+  <h2>Our Beautiful Memories 📸</h2>
+  <div class="gallery">
+    <div class="polaroid"><img src="pic1.jpg"></div>
+    <div class="polaroid"><img src="pic2.jpg"></div>
+    <div class="polaroid"><img src="pic3.jpg"></div>
+    <div class="polaroid"><img src="pic4.jpg"></div>
+  </div>
+  <button class="yes" onclick="next2()">Next ❤️</button>
+</div>
+
+<div id="step4" class="hidden">
+  <div class="award">
+    🏆 <b>BEST GIRLFRIEND AWARD</b> 🏆  
+    <br><br>
+    This award proudly goes to  
+    <b>Shreya Parekh</b> 💕  
+    <br>
+    For loving me endlessly ❤️
+  </div>
+  <button class="yes" onclick="next3()">Love Letter 💌</button>
+</div>
+
+<div id="step5" class="hidden">
+  <div class="letter">
+    <h2>Dear Shreya ❤️</h2>
+    <p>
+      You are my favorite feeling,  
+      my safest place, and my biggest blessing.
+      <br><br>
+      Loving you feels natural, effortless, and forever.
+      I don’t just love you for who you are,
+      but for who I become when I’m with you.
+      <br><br>
+      No matter where life takes us,
+      my heart will always choose you 💖
+    </p>
+    <h3>— Forever Yours ❤️</h3>
+  </div>
+</div>
+
+</div>
+
+<script>
+const range = document.getElementById("loveRange");
+const percent = document.getElementById("percent");
+range.oninput = () => percent.innerText = range.value;
+
+function noClicked() {
+  alert("WHY DID YOU SAY NO 😭💔");
+}
+
+function yesClicked() {
+  fireworks();
+  document.getElementById("step1").classList.add("hidden");
+  document.getElementById("step2").classList.remove("hidden");
+}
+
+function next() {
+  document.getElementById("step2").classList.add("hidden");
+  document.getElementById("step3").classList.remove("hidden");
+}
+
+function next2() {
+  document.getElementById("step3").classList.add("hidden");
+  document.getElementById("step4").classList.remove("hidden");
+}
+
+function next3() {
+  document.getElementById("step4").classList.add("hidden");
+  document.getElementById("step5").classList.remove("hidden");
+}
+
+function fireworks() {
+  for (let i = 0; i < 25; i++) {
+    const fw = document.createElement("div");
+    fw.className = "firework";
+    fw.style.left = Math.random() * 100 + "vw";
+    fw.style.top = Math.random() * 100 + "vh";
+    fw.style.background = `hsl(${Math.random()*360},100%,70%)`;
+    document.body.appendChild(fw);
+    setTimeout(() => fw.remove(), 1000);
+  }
+}
+</script>
+
+</body>
+</html>
